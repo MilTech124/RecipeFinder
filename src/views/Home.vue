@@ -38,13 +38,11 @@ import { ref } from 'vue'
     axios
     .get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${user.apiKEY}&query=${search.value}&number=3&offset=${skip.value}`)
     .then(r=>reciples.value=r.data.results)
-
     }
 
     const skipThis=()=>{
         skip.value=skip.value+1
-        handleSearch()
-        
+        handleSearch()        
     }
 
 </script>

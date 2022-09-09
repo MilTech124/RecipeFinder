@@ -6,7 +6,7 @@
             <div id="formContent">                
                 <!-- Icon -->
                 <div class="fadeIn first">
-                <img src="logo.png" id="icon" alt="User Icon" />
+                <img src="../assets/image/logo.png" id="icon" alt="User Icon" />
                 </div>
 
                 <!-- Login Form -->
@@ -270,6 +270,7 @@ input[type=text]:placeholder {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
   animation-delay: 0.4s;
+  text-align: -webkit-center;
 }
 
 .fadeIn.second {

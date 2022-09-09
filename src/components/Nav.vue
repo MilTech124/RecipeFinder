@@ -2,7 +2,7 @@
 <!-- SIMPLE BOOTSTRAP NAVBAR -->
     <nav class="navbar navbar-expand-md bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="logo.png" alt=""></a>
+            <a class="navbar-brand" href="#"><img src="../assets/image/logo.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -12,11 +12,8 @@
                     <router-link to="/" class="nav-link">Home</router-link>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">My Favorite</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-                </li>              
+                    <router-link to="/favorite" class="nav-link">Favorite</router-link>
+                </li>                         
             </ul>
             <router-link  to="/login"><button class="btn btn-outline-primary" type="submit">Logout</button></router-link>
             </div>

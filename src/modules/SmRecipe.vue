@@ -1,11 +1,14 @@
 <template>
-   <router-link :to="{name:'recipe',params:{id:id}}"><div class="card" style="width: 18rem;">
+   <router-link :to="{name:'recipe',params:{id:id}}">
+    <div class="card" style="width: 18rem;">
         <img :src="img" class="card-img-top">
         <div class="card-body">
-            <h5 class="card-title">{{title}}</h5>                 
+            <h5 class="card-title">{{title}}</h5> 
+            <p v-if="sumary">{{sumary.slice(0,200).replace(/(<([^>]+)>)/gi, "")}}</p>                
         </div>
-        <div class="heart"><i class="fa fa-heart fa-2x" aria-hidden="true"></i></div>
-        
+        <div v-if="!sumary" class="heart">
+            <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+        </div>
     </div>
 </router-link>
 </template>
@@ -14,7 +17,7 @@
 
 export default{
 
-    props:['title','img',"id"],
+    props:['title','img',"id","sumary"],
 
     setup(props){
         console.log(props.id);
@@ -26,14 +29,21 @@ export default{
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .card{
     border: none;
     -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
     -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
     box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
     transition: all ease 0.1s;
-    position: relative;
+    position: relative;   
+    card-img-top{
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+
+    } 
+   
     &:hover{
         scale: 1.005;  
         .card-body{
@@ -41,7 +51,7 @@ export default{
         }     
     }
     .card-body{
-        background-color: var(--main-item-color);
+        background-color: var(--main-item-color);        
        
         h5{
             color: var(--main-font-color);
