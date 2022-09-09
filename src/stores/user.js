@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 
 export const userStore = defineStore('userStore', () => {
   const user = ref(0)
-  const loged = ref(true)
+  const loged = ref(false)
   const apiKEY= 'e986cafbb2d84bcf9e6d8281c8b5a8cd'
   const userName='Jarek'
   const uImg='https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745'
