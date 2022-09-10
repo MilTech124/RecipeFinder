@@ -1,6 +1,8 @@
-# Tukano
+# Reciple Finder
 
-This template should help get you started developing with Vue 3 in Vite.
+Not finished Reciple finder use
+User: Jarosław 
+Password:Matusiak
 
 ## Recommended IDE Setup
 
