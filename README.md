@@ -1,4 +1,4 @@
-# Reciple Finder
+# Tukano
 
 Not finished Reciple finder use
 User: Jarosław 
