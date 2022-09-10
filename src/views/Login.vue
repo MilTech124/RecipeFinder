@@ -6,38 +6,37 @@
             <div id="formContent">                
                 <!-- Icon -->
                 <div class="fadeIn first">
-                <img src="../assets/image/logo.png" id="icon" alt="User Icon" />
+                  <img src="../assets/image/logo.png" id="icon" alt="User Icon" />
                 </div>
-
+                <!-- Icon -->
                 <!-- Login Form -->
                 <form @submit.prevent="handleSubmit">
-                <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" v-model="login">
-                <input type="text" id="password" class="fadeIn third" name="login" placeholder="password" v-model="password">
-                <input type="submit" class="fadeIn fourth" value="Log In">
+                  <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" v-model="login">
+                  <input type="text" id="password" class="fadeIn third" name="login" placeholder="password" v-model="password">
+                  <input type="submit" class="fadeIn fourth" value="Log In">
                 </form>
-
+                 <!-- Login Form -->
                 <!-- Remind Passowrd -->
                 <div id="formFooter">
-                <a class="underlineHover" href="#">Forgot Password?</a>
+                  <a class="underlineHover" href="#">Forgot Password?</a>
                 </div>
                 <div v-if="error" style="color:red ;fontSize:1.5rem">{{error}}</div>
+                <!-- Remind Passowrd -->
             </div>
         </div>
-
     </section>
   </main>
 </template>
 <script setup>
   import { ref } from 'vue';
   import {userStore} from '@/stores/user'
-import { useRouter } from 'vue-router';
+  import { useRouter } from 'vue-router';
   
   const login = ref(null)
   const password = ref(null)
   const user = userStore()
   const error=ref(null)
-  const router = useRouter()
- 
+  const router = useRouter() 
 
   // FUNCTION SUBMIT
   const handleSubmit = () => {
@@ -47,23 +46,20 @@ import { useRouter } from 'vue-router';
       router.push(({name:'home'}))
     }else{
       error.value="empty/wrong login or pass"
-    }
-    i
+    }    
   }
   // FUNCTION SUBMIT
   
   </script>
 
 <style lang="scss">
- #hero{   
+#hero{   
     height:100vh; 
     width: 100%;
     background-image: url('../assets/image/herobg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-
-
 /* BASIC */
 
 a {
@@ -82,8 +78,6 @@ h2 {
   margin: 40px 8px 10px 8px; 
   color: #cccccc;
 }
-
-
 
 /* STRUCTURE */
 
@@ -125,8 +119,6 @@ h2 {
   border-radius: 0 0 10px 10px;
 }
 
-
-
 /* TABS */
 
 h2.inactive {
@@ -137,8 +129,6 @@ h2.active {
   color: #0d0d0d;
   border-bottom: 2px solid #5fbae9;
 }
-
-
 
 /* FORM TYPOGRAPHY*/
 
@@ -205,8 +195,6 @@ input[type=text]:focus {
 input[type=text]:placeholder {
   color: #cccccc;
 }
-
-
 
 /* ANIMATIONS */
 
@@ -310,8 +298,6 @@ input[type=text]:placeholder {
 .underlineHover:hover:after{
   width: 100%;
 }
-
-
 
 /* OTHERS */
 

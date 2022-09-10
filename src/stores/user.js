@@ -1,14 +1,17 @@
-import { ref, computed } from 'vue'
+import { ref} from 'vue'
 import { defineStore } from 'pinia'
+import {useLocalStorage} from '@vueuse/core'
 
 export const userStore = defineStore('userStore', () => {
   const user = ref(0)
-  const loged = ref(false)
-  const apiKEY= 'e986cafbb2d84bcf9e6d8281c8b5a8cd'
+  const loged = ref(useLocalStorage('vueUserUser',
+    false
+  ))
+  const apiKEY= '990b231e61234146b99a522b40c958d2'
   const userName='Jarek'
   const uImg='https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745'
   
-  const recipeID=ref([       
+  const recipeID=ref(useLocalStorage('recipes',[       
   {
     "id":"1096165",      
     "comments":[
@@ -48,10 +51,10 @@ export const userStore = defineStore('userStore', () => {
   }
 ]   
     
-  )
-  const favRecipe=ref([
+  ))
+  const favRecipe=ref(useLocalStorage('favRecipe',[
     "1096165","680975"
-  ])
+  ]))
     
 
   return { user, loged, apiKEY, recipeID, userName, uImg, favRecipe}

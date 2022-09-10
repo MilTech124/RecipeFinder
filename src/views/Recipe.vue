@@ -1,6 +1,7 @@
 <template>
     <div v-if="recipe" class="recipe">
-        <div class="heading-recipe">  
+        <div class="heading-recipe">
+            <!-- LEFT IMAGE WITH ICONS   -->            
             <div class="l-img">
                 <img :src="recipe.image" alt="">
                 <h1>{{recipe.title}}</h1>  
@@ -12,7 +13,9 @@
                     <i v-if="recipe.glutenFree" class="fa  fa-check-circle-o fa-3x" style="color:green;" aria-hidden="true" ><p>gluten free</p></i>
                     <i v-if="recipe.dairyFree" class="fa  fa-paw fa-3x" style="color:green;" aria-hidden="true" ><p>dairy free</p></i>
                 </div>              
-            </div>  
+            </div> 
+            <!-- LEFT IMAGE WITH ICONS   --> 
+            <!-- INGREMENTS -->
             <div class="recipe-info">
                 <h2>Ingrements</h2>
                 <div v-for="item in recipe.extendedIngredients" class="list-group mx-0 w-auto">
@@ -23,11 +26,12 @@
                             <small class="d-block text-muted">{{item.original}}</small>
                         </span>
                     </label>                   
-                </div>
-                                      
-            </div>  
+                </div>                                      
+            </div>
+            <!-- INGREMENTS -->  
         </div> 
         <div class="container">
+            <!-- COOKING INFOS -->
             <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
                     <div  class="rounded-circle flex-shrink-0 ">
@@ -62,7 +66,9 @@
                     </div>                        
                     </div>
                 </a>
-            </div>        
+            </div>
+            <!-- COOKING INFOS --> 
+            <!-- INSTRUCTIONS  -->
             <h2>Instruction</h2>
             <div class="recipe-step">
                 <div v-for="step in recipe.analyzedInstructions[0].steps" class="list-group mx-0 w-auto">
@@ -74,7 +80,10 @@
                     </label>                   
                 </div>
             </div>
+            <!-- INSTRUCTIONS  -->
+            <!-- COMMENTS MODULE -->
             <Comment :id="id"/> 
+            <!-- COMMENTS MODULE -->
         </div>
         <button @click="addFav" class="btn add-fav"> Add to favorite</button>
     </div>
@@ -86,32 +95,27 @@ import {userStore} from '@/stores/user'
 import { ref } from 'vue';
 import Comment from '../modules/Comment.vue';
 
+export default{
+props: ["id"],
+components: { Comment },  
 
-    export default{
-    props: ["id"],
-    components: { Comment },
-    setup(props) {
-        const recipe = ref(null);
-        const user = userStore();
-        const image = ref(null);
-
-        const addFav = () => {
-            if(!user.favRecipe.includes(props.id)){
-            user.favRecipe.push(props.id)
-            console.log(user.favRecipe);
+setup(props) {
+    const recipe = ref(null);
+    const user = userStore();
+    const image = ref(null);
+    
+    const addFav = () => {
+        if(!user.favRecipe.includes(props.id)){
+        user.favRecipe.push(props.id)           
         }
-        }
-
-        axios
-            .get(`https://api.spoonacular.com/recipes/${props.id}/information?apiKey=${user.apiKEY}&includeNutrition=false`)
-            .then(r => recipe.value = r.data);
-            
-        return { recipe, image, addFav };
+    }
+    axios
+        .get(`https://api.spoonacular.com/recipes/${props.id}/information?apiKey=${user.apiKEY}&includeNutrition=false`)
+        .then(r => recipe.value = r.data);
+        
+    return { recipe, image, addFav };
     },
-    
-}
-    
-
+}  
 </script>
 
 <style lang="scss">
@@ -132,7 +136,6 @@ import Comment from '../modules/Comment.vue';
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-
             }
             h1{
                 position: absolute;
@@ -146,9 +149,7 @@ import Comment from '../modules/Comment.vue';
                 position: absolute;                                  
                 top: 10px;
                 right: 10px;
-                display: flex;                   
-                
-                
+                display: flex;
                 i{
                     position: relative;
                     margin-left: 10px;
@@ -180,7 +181,6 @@ import Comment from '../modules/Comment.vue';
     .recipe-info{
         width: 100%;
         padding: 0 5em;
-        
     }
     .container{  
         display: flex;
@@ -190,8 +190,8 @@ import Comment from '../modules/Comment.vue';
         max-width: 1200px;
     }
     h2{
-            padding-top: 50px;
-            padding-bottom: 20px;
+        padding-top: 50px;
+        padding-bottom: 20px;
         }
     .add-fav{
         position: fixed;

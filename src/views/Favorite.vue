@@ -13,12 +13,10 @@ import { ref } from 'vue';
     const recipes=ref([])
     const user = userStore()
 
-    user.favRecipe.forEach(element => {
-        console.log(element); 
+    user.favRecipe.forEach(element => {    
     axios
     .get(`https://api.spoonacular.com/recipes/${element}/information?apiKey=${user.apiKEY}&includeNutrition=false`)
-    .then(r => recipes.value.push(r.data) )
-        console.log(recipes.value);
+    .then(r => recipes.value.push(r.data) )        
     });
 </script>
 

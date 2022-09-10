@@ -34,6 +34,7 @@ import { ref } from 'vue'
     const search = ref(null)
     const skip = ref(0)
 
+    // FUNCTIONS
     const handleSearch=()=>{
     axios
     .get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${user.apiKEY}&query=${search.value}&number=3&offset=${skip.value}`)
@@ -41,9 +42,10 @@ import { ref } from 'vue'
     }
 
     const skipThis=()=>{
-        skip.value=skip.value+1
+        skip.value=skip.value+3
         handleSearch()        
     }
+    // FUNCTIONS
 
 </script>
 

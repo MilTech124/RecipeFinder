@@ -1,12 +1,16 @@
 <template>
+ <!-- FORM OF COMMENT -->
 <div class="form">
     <h2>Comments</h2>
     <div class="row d-flex justify-content-center" id="comment">        
         <div class="card shadow-0 border" style="background-color: #f0f2f5;">
             <div class="card-body p-4">
+                <!-- INPUT OF COMMENT -->
                 <div class="form-outline mb-4">
-                <input v-on:keyup.enter="addComment" type="text" id="addANote" class="form-control" placeholder="Add Comment..." v-model="text" />                    
+                    <input v-on:keyup.enter="addComment" type="text" id="addANote" class="form-control" placeholder="Add Comment..." v-model="text" />                    
                 </div>
+                <!-- INPUT OF COMMENT -->
+                <!-- OUTPUT COMMENTS -->
                 <div v-for="recipe in user.recipeID">
                     <div class="flex-reverse" v-if="recipe.id===id" >
                         <div  v-for="comment in recipe.comments">                                
@@ -27,11 +31,13 @@
                             </div> 
                         </div>                            
                     </div> 
-                </div>                 
+                </div>
+                <!-- OUTPUT COMMENTS -->                 
             </div>
         </div>        
     </div>
 </div>
+ <!-- FORM OF COMMENT -->
 </template>
 
 <script setup>    
@@ -43,8 +49,7 @@ const props=defineProps({id:String})
 const text=ref(null)
 
 
-const addComment = () => {
-    
+const addComment = () => {    
     const flag=ref(true)
 
     user.recipeID.forEach(element => {      
@@ -57,10 +62,8 @@ const addComment = () => {
                 like:0,
                 uImg:user.uImg
             })            
-            element.comments.push(obj.value)            
-           
+            element.comments.push(obj.value)  
         }
-        
     })
    if(flag.value){            
         const obj = ref(
@@ -78,12 +81,11 @@ const addComment = () => {
             }
         ) 
         user.recipeID.push(obj.value) 
-        }
+    }
 }
 </script>
 
 <style lang="scss">
-
 .flex-reverse{
     display: flex;
     flex-direction: column-reverse;

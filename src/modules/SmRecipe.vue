@@ -6,7 +6,7 @@
             <h5 class="card-title">{{title}}</h5> 
             <p v-if="sumary">{{sumary.slice(0,200).replace(/(<([^>]+)>)/gi, "")}}</p>                
         </div>
-        <div v-if="!sumary" class="heart">
+        <div v-if="!sumary" @click="" class="heart">
             <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
         </div>
     </div>
@@ -14,19 +14,20 @@
 </template>
 
 <script>
-
+import {userStore} from '@/stores/user'
 export default{
+props:['title','img',"id","sumary"],
 
-    props:['title','img',"id","sumary"],
-
-    setup(props){
-        console.log(props.id);
-        return{}
+setup(){
+    const user = userStore();
+    const addFav = () => {
+            if(!user.favRecipe.includes(props.id)){
+            user.favRecipe.push(props.id)           
+            }
+        }
+        return{addFav}
     }
 }
-
-
-
 </script>
 
 <style lang="scss" scoped>
@@ -41,18 +42,15 @@ export default{
         width: 100%;
         height: 250px;
         object-fit: cover;
-
-    } 
-   
+    }    
     &:hover{
-        scale: 1.005;  
+        scale: 1.005;
         .card-body{
         background-color:var(--main-hover-color);   
         }     
     }
     .card-body{
-        background-color: var(--main-item-color);        
-       
+        background-color: var(--main-item-color);
         h5{
             color: var(--main-font-color);
             text-align: center;            
@@ -68,11 +66,10 @@ export default{
         transition: all ease 0.2s;
         cursor: pointer;
         &:hover{
-                scale: 1.1;
-            }
+            scale: 1.1;
+        }
         i{
-            color: red;
-            
+           color: red;            
         }
 
     }
