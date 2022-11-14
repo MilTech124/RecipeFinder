@@ -1,7 +1,7 @@
 <template>
 <div class="f-recipes">
     <!-- SEARCH INPUT -->
-    <div class="logo"><img src="logo.png" alt=""></div>
+    <div class="logo"><img src="../assets/image/logo.png" alt=""></div>
     <div class="input-group">    
         <input class="form-control form-control-lg" list="datalistOptions" id="exampleDataList" placeholder="Type to search..." v-model="search">
         <datalist id="datalistOptions">
