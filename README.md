@@ -4,6 +4,8 @@ Not finished Reciple finder use
 User: Jarosław 
 Password:Matusiak
 
+demo at : https://reciple-finder.vercel.app/login
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
